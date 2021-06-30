@@ -1,0 +1,29 @@
+{
+    "name": "web-dev-boilerplate",
+    "version": "1.0.0",
+    "description": "Boilerplate code for website development with bootstrap, fontawsome, dart-sass and autoprifixer.",
+    "main": "index.js",
+    "scripts": {
+        "watch-sass": "sass --watch src/scss:dist/assets/css",
+        "watch-html": "gulp",
+        "dev": "sass --watch src/scss:dist/assets/css & gulp"
+    },
+    "keywords": [
+        "Bootstrap",
+        "Dart-Sass",
+        "Fontawesome"
+    ],
+    "author": "Apar Awasthi",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^2.27.3",
+        "gulp": "^4.0.2",
+        "sass": "^1.35.1"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "autoprefixer": "^10.2.6",
+        "bootstrap": "^5.0.2",
+        "postcss-cli": "^8.3.1"
+    }
+}
