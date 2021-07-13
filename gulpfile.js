@@ -1,8 +1,16 @@
 const { src, dest, series, parallel, watch } = require("gulp");
+const fileinclude = require("gulp-file-include");
 const browsersync = require("browser-sync").create();
 
-function copyHtmlFiles() {
-    return src(["src/**/*.html"], { base: "src" }).pipe(dest("dist/"));
+function processHtmlFiles() {
+    return src(["src/**/*.html", "!src/**/common/**/*"])
+        .pipe(
+            fileinclude({
+                prefix: "@@",
+                basepath: "@file",
+            })
+        )
+        .pipe(dest("dist/"));
 }
 
 function copyFontawesomeFiles() {
@@ -35,7 +43,7 @@ function browsersyncReload(cb) {
 
 // Watch Task
 function watchTask() {
-    watch("src/**/*.html", series(copyHtmlFiles, browsersyncReload));
+    watch("src/**/*.html", series(processHtmlFiles, browsersyncReload));
     watch("dist/assets/css/*.css", browsersyncReload);
 }
 
@@ -44,7 +52,7 @@ exports.copyBootstrapJs = copyBootstrapJs;
 
 // Default Gulp task
 exports.default = series(
-    parallel(copyBootstrapJs, copyHtmlFiles, copyFontawesomeFiles),
+    parallel(copyBootstrapJs, processHtmlFiles, copyFontawesomeFiles),
     browsersyncServe,
     watchTask
 );
