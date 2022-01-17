@@ -6,7 +6,8 @@
     "scripts": {
         "watch-sass": "sass --watch src/scss:dist/assets/css",
         "watch-html": "gulp",
-        "dev": "sass --watch src/scss:dist/assets/css & gulp"
+        "dev": "sass --watch src/scss:dist/assets/css & gulp",
+        "build": "sass --no-source-map --style=compressed src/scss:dist/assets/css & gulp build"
     },
     "keywords": [
         "Bootstrap",

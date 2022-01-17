@@ -56,3 +56,7 @@ exports.default = series(
     browsersyncServe,
     watchTask
 );
+
+exports.build = series(
+    parallel(copyBootstrapJs, processHtmlFiles, copyFontawesomeFiles)
+);
